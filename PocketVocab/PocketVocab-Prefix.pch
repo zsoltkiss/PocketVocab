@@ -12,3 +12,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+typedef enum {
+    kWordCardStateHidden,
+    kWordCardStateLang1,
+    kWordCardStateLang2
+} WordCardState;

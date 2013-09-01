@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordCard.h"
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <WordCardDelegate>
 
 @end

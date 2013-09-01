@@ -26,6 +26,10 @@
 		D7B452E117D25902006927D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E017D25902006927D9 /* QuartzCore.framework */; };
 		D7B452E317D2590B006927D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E217D2590B006927D9 /* AudioToolbox.framework */; };
 		D7B452E517D259D0006927D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E417D259D0006927D9 /* AVFoundation.framework */; };
+		D7B452F017D29D49006927D9 /* WordCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452EF17D29D49006927D9 /* WordCard.m */; };
+		D7B452F417D29ED7006927D9 /* LanguagePair.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452F317D29ED7006927D9 /* LanguagePair.m */; };
+		D7B452F817D2A52A006927D9 /* flag_united_kingdom.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452F617D2A52A006927D9 /* flag_united_kingdom.png */; };
+		D7B452F917D2A52A006927D9 /* flag_hungary.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452F717D2A52A006927D9 /* flag_hungary.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,12 @@
 		D7B452E017D25902006927D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D7B452E217D2590B006927D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D7B452E417D259D0006927D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D7B452EE17D29D49006927D9 /* WordCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordCard.h; path = ../../WordCard.h; sourceTree = "<group>"; };
+		D7B452EF17D29D49006927D9 /* WordCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordCard.m; path = ../../WordCard.m; sourceTree = "<group>"; };
+		D7B452F217D29ED7006927D9 /* LanguagePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePair.h; sourceTree = "<group>"; };
+		D7B452F317D29ED7006927D9 /* LanguagePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePair.m; sourceTree = "<group>"; };
+		D7B452F617D2A52A006927D9 /* flag_united_kingdom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_united_kingdom.png; sourceTree = "<group>"; };
+		D7B452F717D2A52A006927D9 /* flag_hungary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_hungary.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +120,7 @@
 		D7B452B717D25838006927D9 /* PocketVocab */ = {
 			isa = PBXGroup;
 			children = (
+				D7B452F517D2A4FC006927D9 /* Images */,
 				D7B452D217D258B0006927D9 /* SettingsViewController.h */,
 				D7B452D317D258B0006927D9 /* SettingsViewController.m */,
 				D7B452CE17D25898006927D9 /* DailyWord.h */,
@@ -119,6 +130,10 @@
 				D7B452C017D25838006927D9 /* AppDelegate.h */,
 				D7B452C117D25838006927D9 /* AppDelegate.m */,
 				D7B452B817D25838006927D9 /* Supporting Files */,
+				D7B452EE17D29D49006927D9 /* WordCard.h */,
+				D7B452EF17D29D49006927D9 /* WordCard.m */,
+				D7B452F217D29ED7006927D9 /* LanguagePair.h */,
+				D7B452F317D29ED7006927D9 /* LanguagePair.m */,
 			);
 			path = PocketVocab;
 			sourceTree = "<group>";
@@ -146,6 +161,15 @@
 				D7B452DB17D258DA006927D9 /* Slt.framework */,
 			);
 			path = Framework;
+			sourceTree = "<group>";
+		};
+		D7B452F517D2A4FC006927D9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D7B452F617D2A52A006927D9 /* flag_united_kingdom.png */,
+				D7B452F717D2A52A006927D9 /* flag_hungary.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +229,8 @@
 				D7B452C817D25838006927D9 /* Default-568h@2x.png in Resources */,
 				D7B452DC17D258DB006927D9 /* AcousticModelEnglish.bundle in Resources */,
 				D7B452DD17D258DB006927D9 /* AcousticModelSpanish.bundle in Resources */,
+				D7B452F817D2A52A006927D9 /* flag_united_kingdom.png in Resources */,
+				D7B452F917D2A52A006927D9 /* flag_hungary.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +246,8 @@
 				D7B452D417D258B0006927D9 /* SettingsViewController.m in Sources */,
 				D7B452D517D258C0006927D9 /* DailyWord.m in Sources */,
 				D7B452D617D258C6006927D9 /* DailyWordsViewController.m in Sources */,
+				D7B452F017D29D49006927D9 /* WordCard.m in Sources */,
+				D7B452F417D29ED7006927D9 /* LanguagePair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +364,7 @@
 				D7B452CD17D25838006927D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
