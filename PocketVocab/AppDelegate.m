@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
 #import "DailyWordsViewController.h"
+#import "EditWordCardViewController.h"
+#import "PlayVocabularyViewController.h"
+#import "Vocabulary.h"
+#import "LanguagePair.h"
+#import "ListOfVocabularies.h"
 
 
 @implementation AppDelegate
@@ -18,22 +23,61 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    LanguagePair *lp = [[LanguagePair alloc]init];
+    lp.lang1 = @"English";
+    lp.lang2 = @"Magyar";
+    lp.imageName1 = @"flag_united_kingdom.png";
+    lp.imageName2 = @"flag_hungary.png";
+    
+    Vocabulary *voc = nil;
+    
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"interview" ofType:@"json"]];
+    voc = [[Vocabulary alloc]initWithData:data];
+    
+//    voc = [[Vocabulary alloc]init];
+//    voc.subject = @"Preparing for interview";
+//    voc.languagePair = lp;
+//    
+//    NSMutableArray *words = [NSMutableArray array];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"to establish" andItsPair:@"létrehozni"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"distressing" andItsPair:@"lehangoló"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"endurance" andItsPair:@"kitartás, állóképesség"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"hilarious" andItsPair:@"vicces, jókedvű"]];
+//    
+//    [words addObject:[[DailyWord alloc]initWithWord:@"summarily" andItsPair:@"summásan, röviden"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"particularly" andItsPair:@"különösen, főleg"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"rely on something" andItsPair:@"számít valamire"]];
+//    [words addObject:[[DailyWord alloc]initWithWord:@"promote somebody to something" andItsPair:@"kinevez, előléptet"]];
+//    
+//    voc.words = words;
+    
     
     UITabBarController *tabController = [[UITabBarController alloc]init];
     
     SettingsViewController *vcSettings = [[SettingsViewController alloc]init];
-    DailyWordsViewController *vcDailyWords = [[DailyWordsViewController alloc]init];
+    PlayVocabularyViewController *vcPlayer = [[PlayVocabularyViewController alloc]initWithVocabulary:voc];
+    
+    ListOfVocabularies *vcVocabList = [[ListOfVocabularies alloc]initWithStyle:UITableViewStylePlain];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:vcVocabList];
+    
+
+    
+//    DailyWordsViewController *vcDailyWords = [[DailyWordsViewController alloc]init];
+//    EditWordCardViewController *vcEditCard = [[EditWordCardViewController alloc]init];
     
     vcSettings.title = @"Settings";
-    vcDailyWords.title = @"Learning";
+    vcPlayer.title = @"Player";
+    vcVocabList.title = @"Saved";
+//    vcDailyWords.title = @"Learning";
+//    vcEditCard.title = @"Edit";
     
     [tabController addChildViewController:vcSettings];
-    [tabController addChildViewController:vcDailyWords];
+    [tabController addChildViewController:vcPlayer];
+    [tabController addChildViewController:navController];
+//    [tabController addChildViewController:vcDailyWords];
+//    [tabController addChildViewController:vcEditCard];
     
     self.window.rootViewController = tabController;
-    
-    
-    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

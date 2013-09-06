@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D771A42817D70B4400E33344 /* DailyWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A42317D70B4400E33344 /* DailyWordsViewController.m */; };
+		D771A42917D70B4400E33344 /* EditWordCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A42517D70B4400E33344 /* EditWordCardViewController.m */; };
+		D771A42A17D70B4400E33344 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A42717D70B4400E33344 /* SettingsViewController.m */; };
+		D771A43017D70BCC00E33344 /* LanguagePair.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A42D17D70BCC00E33344 /* LanguagePair.m */; };
+		D771A43117D70BCC00E33344 /* DailyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A42F17D70BCC00E33344 /* DailyWord.m */; };
+		D771A43417D70C3F00E33344 /* WordCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A43217D70C3F00E33344 /* WordCard.m */; };
+		D771A43717D70D3300E33344 /* PlayVocabularyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A43617D70D3300E33344 /* PlayVocabularyViewController.m */; };
+		D771A43A17D710AB00E33344 /* Vocabulary.m in Sources */ = {isa = PBXBuildFile; fileRef = D771A43917D710AA00E33344 /* Vocabulary.m */; };
+		D771A43C17D723D500E33344 /* interview.json in Resources */ = {isa = PBXBuildFile; fileRef = D771A43B17D723D500E33344 /* interview.json */; };
 		D7B452B217D25838006927D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452B117D25838006927D9 /* UIKit.framework */; };
 		D7B452B417D25838006927D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452B317D25838006927D9 /* Foundation.framework */; };
 		D7B452B617D25838006927D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452B517D25838006927D9 /* CoreGraphics.framework */; };
@@ -16,9 +25,6 @@
 		D7B452C417D25838006927D9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452C317D25838006927D9 /* Default.png */; };
 		D7B452C617D25838006927D9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452C517D25838006927D9 /* Default@2x.png */; };
 		D7B452C817D25838006927D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452C717D25838006927D9 /* Default-568h@2x.png */; };
-		D7B452D417D258B0006927D9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452D317D258B0006927D9 /* SettingsViewController.m */; };
-		D7B452D517D258C0006927D9 /* DailyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452CF17D25898006927D9 /* DailyWord.m */; };
-		D7B452D617D258C6006927D9 /* DailyWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452D117D25898006927D9 /* DailyWordsViewController.m */; };
 		D7B452DC17D258DB006927D9 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7B452D817D258DA006927D9 /* AcousticModelEnglish.bundle */; };
 		D7B452DD17D258DB006927D9 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7B452D917D258DA006927D9 /* AcousticModelSpanish.bundle */; };
 		D7B452DE17D258DB006927D9 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452DA17D258DA006927D9 /* OpenEars.framework */; };
@@ -26,13 +32,30 @@
 		D7B452E117D25902006927D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E017D25902006927D9 /* QuartzCore.framework */; };
 		D7B452E317D2590B006927D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E217D2590B006927D9 /* AudioToolbox.framework */; };
 		D7B452E517D259D0006927D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B452E417D259D0006927D9 /* AVFoundation.framework */; };
-		D7B452F017D29D49006927D9 /* WordCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452EF17D29D49006927D9 /* WordCard.m */; };
-		D7B452F417D29ED7006927D9 /* LanguagePair.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B452F317D29ED7006927D9 /* LanguagePair.m */; };
 		D7B452F817D2A52A006927D9 /* flag_united_kingdom.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452F617D2A52A006927D9 /* flag_united_kingdom.png */; };
 		D7B452F917D2A52A006927D9 /* flag_hungary.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B452F717D2A52A006927D9 /* flag_hungary.png */; };
+		D7D520BE17D7CE8B0094B72B /* ListOfVocabularies.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D520BD17D7CE8B0094B72B /* ListOfVocabularies.m */; };
+		D7D520C217D7D6AE0094B72B /* VocabularyContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D520C117D7D6AE0094B72B /* VocabularyContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D771A42217D70B4400E33344 /* DailyWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyWordsViewController.h; sourceTree = "<group>"; };
+		D771A42317D70B4400E33344 /* DailyWordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyWordsViewController.m; sourceTree = "<group>"; };
+		D771A42417D70B4400E33344 /* EditWordCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWordCardViewController.h; sourceTree = "<group>"; };
+		D771A42517D70B4400E33344 /* EditWordCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWordCardViewController.m; sourceTree = "<group>"; };
+		D771A42617D70B4400E33344 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D771A42717D70B4400E33344 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		D771A42C17D70BCC00E33344 /* LanguagePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePair.h; sourceTree = "<group>"; };
+		D771A42D17D70BCC00E33344 /* LanguagePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePair.m; sourceTree = "<group>"; };
+		D771A42E17D70BCC00E33344 /* DailyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyWord.h; sourceTree = "<group>"; };
+		D771A42F17D70BCC00E33344 /* DailyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyWord.m; sourceTree = "<group>"; };
+		D771A43217D70C3F00E33344 /* WordCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordCard.m; sourceTree = "<group>"; };
+		D771A43317D70C3F00E33344 /* WordCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordCard.h; sourceTree = "<group>"; };
+		D771A43517D70D3300E33344 /* PlayVocabularyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVocabularyViewController.h; sourceTree = "<group>"; };
+		D771A43617D70D3300E33344 /* PlayVocabularyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVocabularyViewController.m; sourceTree = "<group>"; };
+		D771A43817D710AA00E33344 /* Vocabulary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vocabulary.h; sourceTree = "<group>"; };
+		D771A43917D710AA00E33344 /* Vocabulary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vocabulary.m; sourceTree = "<group>"; };
+		D771A43B17D723D500E33344 /* interview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = interview.json; sourceTree = "<group>"; };
 		D7B452AD17D25838006927D9 /* PocketVocab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketVocab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B452B117D25838006927D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7B452B317D25838006927D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -46,12 +69,6 @@
 		D7B452C317D25838006927D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D7B452C517D25838006927D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D7B452C717D25838006927D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D7B452CE17D25898006927D9 /* DailyWord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyWord.h; sourceTree = "<group>"; };
-		D7B452CF17D25898006927D9 /* DailyWord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyWord.m; sourceTree = "<group>"; };
-		D7B452D017D25898006927D9 /* DailyWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyWordsViewController.h; sourceTree = "<group>"; };
-		D7B452D117D25898006927D9 /* DailyWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyWordsViewController.m; sourceTree = "<group>"; };
-		D7B452D217D258B0006927D9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		D7B452D317D258B0006927D9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D7B452D817D258DA006927D9 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
 		D7B452D917D258DA006927D9 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
 		D7B452DA17D258DA006927D9 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
@@ -59,12 +76,12 @@
 		D7B452E017D25902006927D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D7B452E217D2590B006927D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D7B452E417D259D0006927D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D7B452EE17D29D49006927D9 /* WordCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordCard.h; path = ../../WordCard.h; sourceTree = "<group>"; };
-		D7B452EF17D29D49006927D9 /* WordCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordCard.m; path = ../../WordCard.m; sourceTree = "<group>"; };
-		D7B452F217D29ED7006927D9 /* LanguagePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePair.h; sourceTree = "<group>"; };
-		D7B452F317D29ED7006927D9 /* LanguagePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePair.m; sourceTree = "<group>"; };
 		D7B452F617D2A52A006927D9 /* flag_united_kingdom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_united_kingdom.png; sourceTree = "<group>"; };
 		D7B452F717D2A52A006927D9 /* flag_hungary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_hungary.png; sourceTree = "<group>"; };
+		D7D520BC17D7CE8B0094B72B /* ListOfVocabularies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfVocabularies.h; sourceTree = "<group>"; };
+		D7D520BD17D7CE8B0094B72B /* ListOfVocabularies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfVocabularies.m; sourceTree = "<group>"; };
+		D7D520C017D7D6AE0094B72B /* VocabularyContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocabularyContentViewController.h; sourceTree = "<group>"; };
+		D7D520C117D7D6AE0094B72B /* VocabularyContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabularyContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +103,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D73AEA4617D70A21001674F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D771A42C17D70BCC00E33344 /* LanguagePair.h */,
+				D771A42D17D70BCC00E33344 /* LanguagePair.m */,
+				D771A42E17D70BCC00E33344 /* DailyWord.h */,
+				D771A42F17D70BCC00E33344 /* DailyWord.m */,
+				D771A43817D710AA00E33344 /* Vocabulary.h */,
+				D771A43917D710AA00E33344 /* Vocabulary.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D73AEA4817D70A2B001674F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D771A43217D70C3F00E33344 /* WordCard.m */,
+				D771A43317D70C3F00E33344 /* WordCard.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D73AEA4917D70A34001674F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D771A42217D70B4400E33344 /* DailyWordsViewController.h */,
+				D771A42317D70B4400E33344 /* DailyWordsViewController.m */,
+				D771A42417D70B4400E33344 /* EditWordCardViewController.h */,
+				D771A42517D70B4400E33344 /* EditWordCardViewController.m */,
+				D771A42617D70B4400E33344 /* SettingsViewController.h */,
+				D771A42717D70B4400E33344 /* SettingsViewController.m */,
+				D771A43517D70D3300E33344 /* PlayVocabularyViewController.h */,
+				D771A43617D70D3300E33344 /* PlayVocabularyViewController.m */,
+				D7D520BC17D7CE8B0094B72B /* ListOfVocabularies.h */,
+				D7D520BD17D7CE8B0094B72B /* ListOfVocabularies.m */,
+				D7D520C017D7D6AE0094B72B /* VocabularyContentViewController.h */,
+				D7D520C117D7D6AE0094B72B /* VocabularyContentViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D7B452A217D25838006927D9 = {
 			isa = PBXGroup;
 			children = (
@@ -120,20 +178,13 @@
 		D7B452B717D25838006927D9 /* PocketVocab */ = {
 			isa = PBXGroup;
 			children = (
+				D73AEA4917D70A34001674F4 /* Controller */,
+				D73AEA4817D70A2B001674F4 /* View */,
+				D73AEA4617D70A21001674F4 /* Model */,
 				D7B452F517D2A4FC006927D9 /* Images */,
-				D7B452D217D258B0006927D9 /* SettingsViewController.h */,
-				D7B452D317D258B0006927D9 /* SettingsViewController.m */,
-				D7B452CE17D25898006927D9 /* DailyWord.h */,
-				D7B452CF17D25898006927D9 /* DailyWord.m */,
-				D7B452D017D25898006927D9 /* DailyWordsViewController.h */,
-				D7B452D117D25898006927D9 /* DailyWordsViewController.m */,
 				D7B452C017D25838006927D9 /* AppDelegate.h */,
 				D7B452C117D25838006927D9 /* AppDelegate.m */,
 				D7B452B817D25838006927D9 /* Supporting Files */,
-				D7B452EE17D29D49006927D9 /* WordCard.h */,
-				D7B452EF17D29D49006927D9 /* WordCard.m */,
-				D7B452F217D29ED7006927D9 /* LanguagePair.h */,
-				D7B452F317D29ED7006927D9 /* LanguagePair.m */,
 			);
 			path = PocketVocab;
 			sourceTree = "<group>";
@@ -148,6 +199,7 @@
 				D7B452C317D25838006927D9 /* Default.png */,
 				D7B452C517D25838006927D9 /* Default@2x.png */,
 				D7B452C717D25838006927D9 /* Default-568h@2x.png */,
+				D771A43B17D723D500E33344 /* interview.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -231,6 +283,7 @@
 				D7B452DD17D258DB006927D9 /* AcousticModelSpanish.bundle in Resources */,
 				D7B452F817D2A52A006927D9 /* flag_united_kingdom.png in Resources */,
 				D7B452F917D2A52A006927D9 /* flag_hungary.png in Resources */,
+				D771A43C17D723D500E33344 /* interview.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,11 +296,16 @@
 			files = (
 				D7B452BE17D25838006927D9 /* main.m in Sources */,
 				D7B452C217D25838006927D9 /* AppDelegate.m in Sources */,
-				D7B452D417D258B0006927D9 /* SettingsViewController.m in Sources */,
-				D7B452D517D258C0006927D9 /* DailyWord.m in Sources */,
-				D7B452D617D258C6006927D9 /* DailyWordsViewController.m in Sources */,
-				D7B452F017D29D49006927D9 /* WordCard.m in Sources */,
-				D7B452F417D29ED7006927D9 /* LanguagePair.m in Sources */,
+				D771A42817D70B4400E33344 /* DailyWordsViewController.m in Sources */,
+				D771A42917D70B4400E33344 /* EditWordCardViewController.m in Sources */,
+				D771A42A17D70B4400E33344 /* SettingsViewController.m in Sources */,
+				D771A43017D70BCC00E33344 /* LanguagePair.m in Sources */,
+				D771A43117D70BCC00E33344 /* DailyWord.m in Sources */,
+				D771A43417D70C3F00E33344 /* WordCard.m in Sources */,
+				D771A43717D70D3300E33344 /* PlayVocabularyViewController.m in Sources */,
+				D771A43A17D710AB00E33344 /* Vocabulary.m in Sources */,
+				D7D520BE17D7CE8B0094B72B /* ListOfVocabularies.m in Sources */,
+				D7D520C217D7D6AE0094B72B /* VocabularyContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +376,7 @@
 		D7B452CC17D25838006927D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zsolt Kiss (XDA9SSH25E)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Framework\"",
@@ -325,7 +384,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketVocab/PocketVocab-Prefix.pch";
 				INFOPLIST_FILE = "PocketVocab/PocketVocab-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "79EDF38E-907F-473E-900D-1988916F2ED8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -333,6 +394,7 @@
 		D7B452CD17D25838006927D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zsolt Kiss (XDA9SSH25E)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Framework\"",
@@ -340,7 +402,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketVocab/PocketVocab-Prefix.pch";
 				INFOPLIST_FILE = "PocketVocab/PocketVocab-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "79EDF38E-907F-473E-900D-1988916F2ED8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

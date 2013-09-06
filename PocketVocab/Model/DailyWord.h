@@ -12,7 +12,10 @@
 
 @property(nonatomic, strong) NSString *word;
 @property(nonatomic, strong) NSString *pair;
+@property(nonatomic, strong) NSString *usageSample;
 
 - (id)initWithWord:(NSString *)someWord andItsPair:(NSString *)pair;
+
+- (id)initWithArray:(NSArray *)array;
 
 @end

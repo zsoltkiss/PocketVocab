@@ -17,5 +17,6 @@
 typedef enum {
     kWordCardStateHidden,
     kWordCardStateLang1,
-    kWordCardStateLang2
+    kWordCardStateLang2,
+    kWordCardStateUsageSample
 } WordCardState;

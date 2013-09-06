@@ -1,0 +1,29 @@
+{
+"subject":"Vocabulary for job interviews",
+"lang1": "English",
+"lang2": "Magyar",
+"words": [
+        ["strongly", "erősen, nyomatékosan", "I strongly recommend you that.."],
+        ["summarily", "sommásan, röviden", "Could you tell the story again summarily?"],
+        ["entirely", "teljesen", ""],
+        ["firmly", "határozottan, szilárdan", "The customer firmly insisted to his right of changing the product."],
+        ["sparsely", "gyéren, elszórtan", "Mesa County is a sparsely populated area of this state."],
+        ["frequently", "sűrűn, gyakran", "When I was young I frequently worked in night duty."],
+        ["rightly", "jogosan, méltán, helyesen", ""],
+        ["particularly", "különösen, főként", "I like concerts in general and music of Bartok particularly."],
+        ["in a little while", "rövidesen, nemsokára", "We are going to have a break in a little while."],
+        ["to achieve", "véghezvisz, teljesít", "I have successfully achieved my today plans."],
+        ["executive", "vezető, igazgató", "Once he was the executive of this company."],
+        ["appropriate", "helyénvaló, illő", "It is not the appropriate behavior in this situation."],
+        ["to fascinate", "elbájol, elkápráztat", "The beauty of surroundings fascinates me."],
+        ["to object", "kifogásol, ellenez", "I strongly object the pollution of air."],
+        ["pursuit", "törekvés", "Pursuit of happiness is a natural wish of every human being."],
+        ["diverse", "különböző, eltérő", "Diverse population of mammals are living here"],
+        ["diversity", "változatosság", "Diversity makes me please."],
+        ["convince", "meggyőz", "We have to convince him of advantages of joining us."],
+        ["appoint", "kinevez, kijelöl", "Look, I have just appointed to be the new leader of our team."],
+        ["surroundings", "környezet, vidék", "This surroundings is very distressing."],
+        ["involved", "bonyolult", "You can come up some least involved solution, can't you?"],
+        ["attend", "részt vesz", "Last year I regularly attended a psychologist."]
+    ]
+}
