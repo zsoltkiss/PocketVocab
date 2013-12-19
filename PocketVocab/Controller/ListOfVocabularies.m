@@ -9,6 +9,8 @@
 #import "ListOfVocabularies.h"
 #import "Vocabulary.h"
 #import "VocabularyContentViewController.h"
+#import "SSZipArchive.h"
+#import "PocketVocabUtil.h"
 
 @interface ListOfVocabularies () {
     
@@ -17,7 +19,7 @@
 }
 
 - (void)loadVocabFilesFromSandbox;
-- (NSString *)pathToDocumentsDirectory;
+
 
 @end
 
@@ -25,13 +27,29 @@
 
 #pragma mark - private methods
 
-- (NSString *)pathToDocumentsDirectory {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+- (void)checksumTest {
     
-    return documentsDirectory;
+    NSMutableDictionary *md = [NSMutableDictionary dictionary];
     
+    NSArray *fileNames = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:YES];
+    
+    for(NSString *fn in fileNames) {
+        
+        NSString *filePath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"] stringByAppendingPathComponent:fn];
+        
+        NSString *md5Hash = [PocketVocabUtil checksumForFile:filePath];
+        
+        if(md5Hash) {
+            [md setObject:md5Hash forKey:fn];
+        }
+    }
+        
+    
+
+    NSLog(@"md5 hashes for files in vocab: %@", md);
 }
+
+
 
 - (void)loadVocabFilesFromSandbox {
     if(_savedVocabularies != nil) {
@@ -39,6 +57,18 @@
     }
     
     NSMutableArray *tmpArray = [NSMutableArray array];
+    
+    //sub directory
+    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
+    
+    
+//    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"zip"];
+    
+    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
+
+    
+    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
+    
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -76,7 +106,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self loadVocabFilesFromSandbox];
+//    [self loadVocabFilesFromSandbox];
+    
+    [self checksumTest];
     [self.tableView reloadData];
 }
 
@@ -106,7 +138,7 @@
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *fileName = [_savedVocabularies objectAtIndex:indexPath.row];
     
-    NSString *fullPath = [[self pathToDocumentsDirectory] stringByAppendingPathComponent:fileName];
+    NSString *fullPath = [[PocketVocabUtil pathToDocumentsDirectory] stringByAppendingPathComponent:fileName];
     
     if([fileName rangeOfString:@".json"].location != NSNotFound) {
         Vocabulary *voc = [[Vocabulary alloc]initWithData:[NSData dataWithContentsOfFile:fullPath]];

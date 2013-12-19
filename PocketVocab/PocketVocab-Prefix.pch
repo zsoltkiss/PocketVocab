@@ -20,3 +20,5 @@ typedef enum {
     kWordCardStateLang2,
     kWordCardStateUsageSample
 } WordCardState;
+
+#define APPLICATION_SUPPORTED_URL_SCHEME @"vocab"
