@@ -15,4 +15,6 @@
 
 + (NSString *)pathToDocumentsDirectory;
 
++ (void)clearDirectory:(NSString *)directoryName underTempDir:(BOOL)inTemp;
+
 @end

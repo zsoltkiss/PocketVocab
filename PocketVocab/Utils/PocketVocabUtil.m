@@ -44,4 +44,23 @@
     
 }
 
++ (void)clearDirectory:(NSString *)directoryName underTempDir:(BOOL)inTemp {
+    NSString *pathComponent = [NSString stringWithFormat:@"/%@", directoryName];
+    
+    for(NSString *fn in [PocketVocabUtil filesInDirectory:directoryName underTempDir:inTemp]) {
+        
+        NSString *fullPath = nil;
+        NSError *removeError;
+        
+        if(inTemp) {
+            fullPath = [[NSTemporaryDirectory() stringByAppendingPathComponent:pathComponent] stringByAppendingPathComponent:fn];
+        } else {
+            fullPath = [[[PocketVocabUtil pathToDocumentsDirectory] stringByAppendingPathComponent:pathComponent] stringByAppendingPathComponent:fn];
+        }
+        
+        [[NSFileManager defaultManager] removeItemAtPath:fullPath error:&removeError];
+        
+    }
+}
+
 @end

@@ -56,34 +56,28 @@
         _savedVocabularies = nil;
     }
     
+    
+    NSArray *fileList = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:NO];
+    
+    
     NSMutableArray *tmpArray = [NSMutableArray array];
     
     //sub directory
-    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
+//    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
     
     
 //    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"zip"];
     
-    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
+//    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
 
     
-    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
+//    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
     
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSLog(@"path to documents directory: %@", documentsDirectory);
-    
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
     for (NSString *s in fileList){
         NSLog(@"vocab file? %@", s);
         
-        if([s rangeOfString:@".json"].location != NSNotFound) {
-            //json file
-            [tmpArray addObject:s];
-        } else if([s rangeOfString:@".vcb"].location != NSNotFound) {
+        if([s rangeOfString:@".vcb"].location != NSNotFound) {
             //vocab file
             [tmpArray addObject:s];
         }
@@ -106,9 +100,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//    [self loadVocabFilesFromSandbox];
+    [self loadVocabFilesFromSandbox];
     
-    [self checksumTest];
+//    [self checksumTest];
     [self.tableView reloadData];
 }
 
@@ -136,17 +130,28 @@
 
 #pragma mark - UITableViewDelegate protocol
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [PocketVocabUtil clearDirectory:@"unzipped" underTempDir:YES];
+    
     NSString *fileName = [_savedVocabularies objectAtIndex:indexPath.row];
     
-    NSString *fullPath = [[PocketVocabUtil pathToDocumentsDirectory] stringByAppendingPathComponent:fileName];
     
-    if([fileName rangeOfString:@".json"].location != NSNotFound) {
-        Vocabulary *voc = [[Vocabulary alloc]initWithData:[NSData dataWithContentsOfFile:fullPath]];
+//    if([fileName rangeOfString:@".json"].location != NSNotFound) {
+//        Vocabulary *voc = [[Vocabulary alloc]initWithData:[NSData dataWithContentsOfFile:fullPath]];
+//        
+//        NSLog(@"Vocabulary content is going to be lpo fuloaded: %@", voc);
+//        VocabularyContentViewController *vocabContent = [[VocabularyContentViewController alloc]initWithVocabulary:voc];
+//        [self.navigationController pushViewController:vocabContent animated:YES];
+//        
+//    }
+    
+    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/unzipped"];
+    
+    if([fileName rangeOfString:@".vcb"].location != NSNotFound) {
+        NSString *fullPath = [[[PocketVocabUtil pathToDocumentsDirectory] stringByAppendingPathComponent:@"/kzstest"] stringByAppendingPathComponent:fileName];
         
-        NSLog(@"Vocabulary content is going to be loaded: %@", voc);
-        VocabularyContentViewController *vocabContent = [[VocabularyContentViewController alloc]initWithVocabulary:voc];
-        [self.navigationController pushViewController:vocabContent animated:YES];
         
+        [SSZipArchive unzipFileAtPath:fullPath toDestination:pathToDestionation];
     }
 }
 
