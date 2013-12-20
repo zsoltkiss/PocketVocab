@@ -9,12 +9,23 @@
 
 @interface PocketVocabUtil : NSObject
 
-+ (NSString *)checksumForFile:(NSString *)pathToFile;
+//+ (NSString *)checksumForFile:(NSString *)pathToFile;
 
-+ (NSArray *)filesInDirectory:(NSString *)directoryName underTempDir:(BOOL)inTemp;
 
+// Methods to retrieve system paths on the device
 + (NSString *)pathToDocumentsDirectory;
++ (NSString *)pathToUserDirectory;
++ (NSString *)pathToInboxDirectory;
 
-+ (void)clearDirectory:(NSString *)directoryName underTempDir:(BOOL)inTemp;
+// Directory listing methods
++ (NSArray *)filesInUserDirectory;
++ (NSArray *)filesInWorkingDirectory;
++ (NSArray *)filesInInboxDirectory;
+
+
++ (BOOL)clearWorkingDirectory:(NSError **)error;
+
++ (BOOL)unzipVocabFileAtUrl:(NSURL *)url error:(NSError **)error;
++ (BOOL)unzipVocabFileAtPath:(NSString *)path error:(NSError **)error;
 
 @end

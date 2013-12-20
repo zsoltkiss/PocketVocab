@@ -14,7 +14,15 @@
 #import "Vocabulary.h"
 #import "LanguagePair.h"
 #import "ListOfVocabularies.h"
+#import "PocketVocabUtil.h"
 
+@interface AppDelegate () {
+    NSURL *_externalResourceUrl;
+}
+
+
+
+@end
 
 @implementation AppDelegate
 
@@ -100,8 +108,17 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if (url){
-        NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"The file contained: %@",str);
+        
+        _externalResourceUrl = url;
+        
+        NSString *infoMessage = [NSString stringWithFormat:@"Would you like Pocket Vocab to open this file? %@", url];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"External resource" message:infoMessage delegate:self cancelButtonTitle:@"No, thanks" otherButtonTitles:@"Open it!", nil];
+        
+        [av show];
+        
+//        NSData *fileContent = [NSData dataWithContentsOfURL:url];
+//        NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+//        NSLog(@"The file contained: %@",str);
     }
     return YES;
 }
@@ -131,6 +148,25 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - UIAlertViewDelegate protocol
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0: {
+            _externalResourceUrl = nil;
+            break;
+        }
+        case 1: {
+            NSError *unzippingError;
+            
+            [PocketVocabUtil unzipVocabFileAtUrl:_externalResourceUrl error:&unzippingError];
+            
+        }
+        default:
+            break;
+    }
 }
 
 @end

@@ -22,3 +22,22 @@ typedef enum {
 } WordCardState;
 
 #define APPLICATION_SUPPORTED_URL_SCHEME @"vocab"
+
+#define APPLICATION_SUPPORTED_FILE_EXTENSION @"vcb"
+
+///< Sub directory under tmp in which the currently processed .vcb content are stored
+#define WORKING_DIRECTORY_PATH @"/Unzipped"
+
+///< Sub directory under Documents in which user's own .vcb files are stores
+#define USER_DIRECTORY_PATH  @"/User"
+
+///< Sub directory under Documents in which externally received files are stored
+#define INBOX_DIRECTORY_PATH  @"/Inbox"
+
+
+#define GetWorkingDirectoryPath() [NSTemporaryDirectory() stringByAppendingPathComponent:WORKING_DIRECTORY_PATH]
+
+//error codes
+#define EC_NOT_SUPPORTED_FILE_EXTENSION 1001
+
+

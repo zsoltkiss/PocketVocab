@@ -14,78 +14,91 @@
 
 @interface ListOfVocabularies () {
     
-    NSArray *_savedVocabularies;
+    NSArray *_externalFiles;
+    NSArray *_internalFiles;
     
 }
 
-- (void)loadVocabFilesFromSandbox;
+//- (void)loadVocabFilesFromSandbox;
 
+
+- (void)loadExternalVocabFiles;
+- (void)loadInternalVocabFiles;
 
 @end
 
 @implementation ListOfVocabularies
 
+
 #pragma mark - private methods
 
-- (void)checksumTest {
-    
-    NSMutableDictionary *md = [NSMutableDictionary dictionary];
-    
-    NSArray *fileNames = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:YES];
-    
-    for(NSString *fn in fileNames) {
-        
-        NSString *filePath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"] stringByAppendingPathComponent:fn];
-        
-        NSString *md5Hash = [PocketVocabUtil checksumForFile:filePath];
-        
-        if(md5Hash) {
-            [md setObject:md5Hash forKey:fn];
-        }
-    }
-        
-    
-
-    NSLog(@"md5 hashes for files in vocab: %@", md);
+- (void)loadExternalVocabFiles {
+    _externalFiles = [PocketVocabUtil filesInInboxDirectory];
 }
 
-
-
-- (void)loadVocabFilesFromSandbox {
-    if(_savedVocabularies != nil) {
-        _savedVocabularies = nil;
-    }
-    
-    
-    NSArray *fileList = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:NO];
-    
-    
-    NSMutableArray *tmpArray = [NSMutableArray array];
-    
-    //sub directory
-//    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
-    
-    
-//    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"zip"];
-    
-//    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
-
-    
-//    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
-    
-    
-    for (NSString *s in fileList){
-        NSLog(@"vocab file? %@", s);
-        
-        if([s rangeOfString:@".vcb"].location != NSNotFound) {
-            //vocab file
-            [tmpArray addObject:s];
-        }
-        
-    }
-    
-    _savedVocabularies = [NSArray arrayWithArray:tmpArray];
+- (void)loadInternalVocabFiles {
+    _internalFiles = [PocketVocabUtil filesInUserDirectory];
 }
+
+//- (void)checksumTest {
+//    
+//    NSMutableDictionary *md = [NSMutableDictionary dictionary];
+//    
+//    NSArray *fileNames = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:YES];
+//    
+//    for(NSString *fn in fileNames) {
+//        
+//        NSString *filePath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"] stringByAppendingPathComponent:fn];
+//        
+//        NSString *md5Hash = [PocketVocabUtil checksumForFile:filePath];
+//        
+//        if(md5Hash) {
+//            [md setObject:md5Hash forKey:fn];
+//        }
+//    }
+//        
+//    
+//
+//    NSLog(@"md5 hashes for files in vocab: %@", md);
+//}
+
+
+
+//- (void)loadVocabFilesFromSandbox {
+//    if(_savedVocabularies != nil) {
+//        _savedVocabularies = nil;
+//    }
+//    
+//    
+//    NSArray *fileList = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:NO];
+//    
+//    
+//    NSMutableArray *tmpArray = [NSMutableArray array];
+//    
+//    //sub directory
+////    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
+//    
+//    
+////    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"zip"];
+//    
+////    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
+//
+//    
+////    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
+//    
+//    
+//    for (NSString *s in fileList){
+//        NSLog(@"vocab file? %@", s);
+//        
+//        if([s rangeOfString:@".vcb"].location != NSNotFound) {
+//            //vocab file
+//            [tmpArray addObject:s];
+//        }
+//        
+//    }
+//    
+//    _savedVocabularies = [NSArray arrayWithArray:tmpArray];
+//}
 
 #pragma mark - view lifecycle
 
@@ -96,21 +109,52 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self loadExternalVocabFiles];
+    [self loadInternalVocabFiles];
+    
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self loadVocabFilesFromSandbox];
+//    [self loadVocabFilesFromSandbox];
     
 //    [self checksumTest];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 
 #pragma mark - UITableViewDatasource protocol
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_savedVocabularies count];
+    
+    switch (section) {
+        case 0:
+            return [_externalFiles count];
+            break;
+            
+        case 1:
+            return [_internalFiles count];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+        return @"External vocabulary files";
+    if(section == 1)
+        return @"User defined vocabulary files";
+    
+    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,18 +166,35 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
-    cell.textLabel.text = [_savedVocabularies objectAtIndex:indexPath.row];
+    NSArray *arrayToUse = (indexPath.section == 0) ? _externalFiles : _internalFiles;
+    
+    cell.textLabel.text = [arrayToUse objectAtIndex:indexPath.row];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate protocol
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [PocketVocabUtil clearDirectory:@"unzipped" underTempDir:YES];
+    NSError *clearDirectoryError;
+    NSError *unzippingError;
+    if([PocketVocabUtil clearWorkingDirectory:&clearDirectoryError]) {
+        
+        NSString *fileName = (indexPath.section == 0) ? [_externalFiles objectAtIndex:indexPath.row] : [_internalFiles objectAtIndex:indexPath.row];
+        
+        NSString *directoryPath = (indexPath.section == 0) ? [PocketVocabUtil pathToInboxDirectory] : [PocketVocabUtil pathToUserDirectory];
+        
+        NSString *fullPath = [directoryPath stringByAppendingPathComponent:fileName];
+        
+        [PocketVocabUtil unzipVocabFileAtPath:fullPath error:&unzippingError];
+        
+    } else {
+        //clean was not successful
+    }
     
-    NSString *fileName = [_savedVocabularies objectAtIndex:indexPath.row];
+    
     
     
 //    if([fileName rangeOfString:@".json"].location != NSNotFound) {
@@ -145,14 +206,13 @@
 //        
 //    }
     
-    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/unzipped"];
+
     
-    if([fileName rangeOfString:@".vcb"].location != NSNotFound) {
-        NSString *fullPath = [[[PocketVocabUtil pathToDocumentsDirectory] stringByAppendingPathComponent:@"/kzstest"] stringByAppendingPathComponent:fileName];
-        
-        
-        [SSZipArchive unzipFileAtPath:fullPath toDestination:pathToDestionation];
-    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end
