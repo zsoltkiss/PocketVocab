@@ -10,7 +10,6 @@
 #import "SettingsViewController.h"
 #import "DailyWordsViewController.h"
 #import "EditWordCardViewController.h"
-#import "PlayVocabularyViewController.h"
 #import "Vocabulary.h"
 #import "LanguagePair.h"
 #import "ListOfVocabularies.h"
@@ -18,13 +17,15 @@
 
 @interface AppDelegate () {
     NSURL *_externalResourceUrl;
+    PlayVocabularyViewController *_vcPlayer;
+    
 }
-
-
 
 @end
 
 @implementation AppDelegate
+
+@synthesize player = _vcPlayer;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -63,7 +64,7 @@
     UITabBarController *tabController = [[UITabBarController alloc]init];
     
     SettingsViewController *vcSettings = [[SettingsViewController alloc]init];
-    PlayVocabularyViewController *vcPlayer = [[PlayVocabularyViewController alloc]initWithVocabulary:voc];
+    _vcPlayer = [[PlayVocabularyViewController alloc]initWithVocabulary:voc];
     
     ListOfVocabularies *vcVocabList = [[ListOfVocabularies alloc]initWithStyle:UITableViewStylePlain];
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:vcVocabList];
@@ -74,13 +75,13 @@
 //    EditWordCardViewController *vcEditCard = [[EditWordCardViewController alloc]init];
     
     vcSettings.title = @"Settings";
-    vcPlayer.title = @"Player";
+    _vcPlayer.title = @"Player";
     vcVocabList.title = @"Saved";
 //    vcDailyWords.title = @"Learning";
 //    vcEditCard.title = @"Edit";
     
     [tabController addChildViewController:vcSettings];
-    [tabController addChildViewController:vcPlayer];
+    [tabController addChildViewController:_vcPlayer];
     [tabController addChildViewController:navController];
 //    [tabController addChildViewController:vcDailyWords];
 //    [tabController addChildViewController:vcEditCard];

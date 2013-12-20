@@ -153,4 +153,17 @@
 }
 
 
+#pragma mark - public methods
+
+- (void)changeVocabulary:(Vocabulary *)vocabulary {
+    if(_isPlaying) {
+        [self startStopPlaying:nil];
+    }
+    
+    _vocab = vocabulary;
+    _nextIndex = 0;
+    
+    [self startStopPlaying:nil];
+}
+
 @end

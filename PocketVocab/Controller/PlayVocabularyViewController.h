@@ -21,4 +21,7 @@
 
 - (id)initWithVocabulary:(Vocabulary *)vocabulary;
 
+// reload a new Vocabulary
+- (void)changeVocabulary:(Vocabulary *)vocabulary;
+
 @end

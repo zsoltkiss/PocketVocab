@@ -11,6 +11,8 @@
 #import "VocabularyContentViewController.h"
 #import "SSZipArchive.h"
 #import "PocketVocabUtil.h"
+#import "AppDelegate.h"
+#import "PlayVocabularyViewController.h"
 
 @interface ListOfVocabularies () {
     
@@ -64,42 +66,6 @@
 
 
 
-//- (void)loadVocabFilesFromSandbox {
-//    if(_savedVocabularies != nil) {
-//        _savedVocabularies = nil;
-//    }
-//    
-//    
-//    NSArray *fileList = [PocketVocabUtil filesInDirectory:@"kzstest" underTempDir:NO];
-//    
-//    
-//    NSMutableArray *tmpArray = [NSMutableArray array];
-//    
-//    //sub directory
-////    NSString *pathToDestionation = [NSTemporaryDirectory() stringByAppendingPathComponent:@"/kzstest"];
-//    
-//    
-////    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"zip"];
-//    
-////    NSString *pathToTestFile = [[NSBundle mainBundle] pathForResource:@"HolidayPlans" ofType:@"vcb"];
-//
-//    
-////    [SSZipArchive unzipFileAtPath:pathToTestFile toDestination:pathToDestionation];
-//    
-//    
-//    for (NSString *s in fileList){
-//        NSLog(@"vocab file? %@", s);
-//        
-//        if([s rangeOfString:@".vcb"].location != NSNotFound) {
-//            //vocab file
-//            [tmpArray addObject:s];
-//        }
-//        
-//    }
-//    
-//    _savedVocabularies = [NSArray arrayWithArray:tmpArray];
-//}
-
 #pragma mark - view lifecycle
 
 
@@ -116,10 +82,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//    [self loadVocabFilesFromSandbox];
-    
-//    [self checksumTest];
-//    [self.tableView reloadData];
+
 }
 
 
@@ -188,10 +151,23 @@
         
         NSString *fullPath = [directoryPath stringByAppendingPathComponent:fileName];
         
-        [PocketVocabUtil unzipVocabFileAtPath:fullPath error:&unzippingError];
+        if([PocketVocabUtil unzipVocabFileAtPath:fullPath error:&unzippingError]) {
+            
+            NSString *pathToMainFile = [GetWorkingDirectoryPath() stringByAppendingString:MAIN_FILE_PATH];
+            NSData *jsonData = [NSData dataWithContentsOfFile:pathToMainFile];
+            Vocabulary *voc = [[Vocabulary alloc] initWithData:jsonData];
+            
+            PlayVocabularyViewController *vcPlayer = [(AppDelegate *)[[UIApplication sharedApplication] delegate] player];
+            [vcPlayer changeVocabulary:voc];
+            
+        } else {
+            //unzip was not successful
+            NSLog(@"Unzipping vocab file %@ FAILED. %@", fileName, clearDirectoryError);
+        }
         
     } else {
         //clean was not successful
+        NSLog(@"Cleaning working directory FAILED. %@", clearDirectoryError);
     }
     
     

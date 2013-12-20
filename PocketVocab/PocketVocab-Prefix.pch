@@ -34,6 +34,9 @@ typedef enum {
 ///< Sub directory under Documents in which externally received files are stored
 #define INBOX_DIRECTORY_PATH  @"/Inbox"
 
+#define MAIN_FILE_PATH @"/vocab.json"
+#define DAT_FILE_PATH @"/vocab.dat"
+
 
 #define GetWorkingDirectoryPath() [NSTemporaryDirectory() stringByAppendingPathComponent:WORKING_DIRECTORY_PATH]
 

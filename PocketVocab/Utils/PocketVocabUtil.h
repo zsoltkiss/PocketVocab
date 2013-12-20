@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Kiss Rudolf Zsolt. All rights reserved.
 //
 
-
 @interface PocketVocabUtil : NSObject
 
 //+ (NSString *)checksumForFile:(NSString *)pathToFile;

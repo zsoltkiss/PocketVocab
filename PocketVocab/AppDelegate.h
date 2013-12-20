@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PlayVocabularyViewController.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property(nonatomic, readonly) PlayVocabularyViewController *player;
 
 @end

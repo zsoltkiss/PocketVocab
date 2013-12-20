@@ -90,19 +90,7 @@
 }
 
 + (BOOL)unzipVocabFileAtUrl:(NSURL *)url error:(NSError *__autoreleasing *)error {
-    
     return [PocketVocabUtil unzipVocabFileAtPath:[url path] error:error];
-    
-//    if([url.pathExtension isEqualToString:APPLICATION_SUPPORTED_FILE_EXTENSION]) {
-//        return [SSZipArchive unzipFileAtPath:[url path] toDestination:GetWorkingDirectoryPath()];
-//    }
-//    
-//    NSString *errorMessage = [NSString stringWithFormat:@"This url points to an unsupported resource: %@", url.absoluteString];
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedDescriptionKey, errorMessage, nil];
-//    
-//    *error = [NSError errorWithDomain:@"hu.zsoltkiss.pocketvocab" code:EC_NOT_SUPPORTED_FILE_EXTENSION userInfo:dic];
-//    
-//    return NO;
 }
 
 @end
