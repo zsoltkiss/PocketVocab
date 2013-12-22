@@ -18,6 +18,7 @@
 @interface AppDelegate () {
     NSURL *_externalResourceUrl;
     PlayVocabularyViewController *_vcPlayer;
+    UITabBarController *_tabController;
     
 }
 
@@ -61,7 +62,7 @@
 //    voc.words = words;
     
     
-    UITabBarController *tabController = [[UITabBarController alloc]init];
+    _tabController = [[UITabBarController alloc]init];
     
     SettingsViewController *vcSettings = [[SettingsViewController alloc]init];
     _vcPlayer = [[PlayVocabularyViewController alloc]initWithVocabulary:voc];
@@ -80,13 +81,13 @@
 //    vcDailyWords.title = @"Learning";
 //    vcEditCard.title = @"Edit";
     
-    [tabController addChildViewController:vcSettings];
-    [tabController addChildViewController:_vcPlayer];
-    [tabController addChildViewController:navController];
+    [_tabController addChildViewController:vcSettings];
+    [_tabController addChildViewController:_vcPlayer];
+    [_tabController addChildViewController:navController];
 //    [tabController addChildViewController:vcDailyWords];
 //    [tabController addChildViewController:vcEditCard];
     
-    self.window.rootViewController = tabController;
+    self.window.rootViewController = _tabController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -168,6 +169,12 @@
         default:
             break;
     }
+}
+
+#pragma mark - public methods
+
+- (void)changeTabTo:(ApplicationTab)newTab {
+    _tabController.selectedIndex = newTab;
 }
 
 @end

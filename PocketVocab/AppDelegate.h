@@ -10,10 +10,19 @@
 
 #import "PlayVocabularyViewController.h"
 
+typedef enum {
+    kApplicationTabSettings,
+    kApplicationTabPlayer,
+    kApplicationTabSavedVocabs
+
+} ApplicationTab;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property(nonatomic, readonly) PlayVocabularyViewController *player;
+
+- (void)changeTabTo:(ApplicationTab)newTab;
 
 @end

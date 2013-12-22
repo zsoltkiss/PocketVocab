@@ -27,12 +27,19 @@
 - (void)loadExternalVocabFiles;
 - (void)loadInternalVocabFiles;
 
+- (void)refreshDatasource;
+
 @end
 
 @implementation ListOfVocabularies
 
 
 #pragma mark - private methods
+
+- (void) refreshDatasource {
+    [self loadExternalVocabFiles];
+    [self loadInternalVocabFiles];
+}
 
 - (void)loadExternalVocabFiles {
     _externalFiles = [PocketVocabUtil filesInInboxDirectory];
@@ -73,16 +80,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    [self loadExternalVocabFiles];
-    [self loadInternalVocabFiles];
+
+    [self refreshDatasource];
     
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    [self refreshDatasource];
+    [self.tableView reloadData];
 }
 
 
@@ -157,8 +163,12 @@
             NSData *jsonData = [NSData dataWithContentsOfFile:pathToMainFile];
             Vocabulary *voc = [[Vocabulary alloc] initWithData:jsonData];
             
-            PlayVocabularyViewController *vcPlayer = [(AppDelegate *)[[UIApplication sharedApplication] delegate] player];
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            PlayVocabularyViewController *vcPlayer = [appDelegate player];
             [vcPlayer changeVocabulary:voc];
+            
+            [appDelegate changeTabTo:kApplicationTabPlayer];
             
         } else {
             //unzip was not successful
